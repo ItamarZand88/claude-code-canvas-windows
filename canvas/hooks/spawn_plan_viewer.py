@@ -38,9 +38,11 @@ def main():
     # Read input from stdin
     try:
         raw_input = sys.stdin.read()
+        debug_log(f"Raw input received: {raw_input[:500]}")  # Log first 500 chars
         input_data = json.loads(raw_input)
+        debug_log(f"Parsed JSON successfully: tool={input_data.get('tool_name', 'unknown')}")
     except json.JSONDecodeError as e:
-        debug_log(f"JSON decode error: {e}")
+        debug_log(f"JSON decode error: {e}, raw input: {raw_input[:200]}")
         sys.exit(0)  # Allow tool to proceed
 
     # Extract tool information
@@ -82,24 +84,32 @@ def main():
     # Extract plan name from filename
     plan_name = Path(file_path).stem
 
-    # Spawn the plan viewer in background
+    # Spawn the plan viewer in a split pane
     try:
         cli_path = Path(plugin_root) / "src" / "cli.ts"
 
-        # Use subprocess to spawn in background
+        # Build the command to run in the split pane
+        bun_cmd = f'bun run "{cli_path}" watch-plan "{file_path}" --title "Plan: {plan_name}"'
+
         if sys.platform == "win32":
-            # Windows: use CREATE_NEW_PROCESS_GROUP and DETACHED_PROCESS
+            # Windows: Use Windows Terminal split pane
+            # wt.exe -w 0 sp -V --size 0.4 cmd /k "command"
             DETACHED_PROCESS = 0x00000008
             CREATE_NEW_PROCESS_GROUP = 0x00000200
+
+            # Change to plugin directory and run the command
+            full_cmd = f'cd /d "{plugin_root}" && {bun_cmd}'
+
+            debug_log(f"Running wt command: wt.exe -w 0 sp -V --size 0.4 cmd /k {full_cmd}")
+
             subprocess.Popen(
-                ["bun", "run", str(cli_path), "watch-plan", file_path, "--title", f"Plan: {plan_name}"],
-                cwd=plugin_root,
+                ["wt.exe", "-w", "0", "sp", "-V", "--size", "0.4", "cmd", "/k", full_cmd],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 creationflags=DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
             )
         else:
-            # Unix: use nohup-style background
+            # Unix: use tmux if available, otherwise background process
             subprocess.Popen(
                 ["bun", "run", str(cli_path), "watch-plan", file_path, "--title", f"Plan: {plan_name}"],
                 cwd=plugin_root,
