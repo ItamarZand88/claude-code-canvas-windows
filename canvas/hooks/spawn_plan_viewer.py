@@ -6,6 +6,7 @@ This hook triggers on PostToolUse for Write|Edit operations.
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -93,17 +94,33 @@ def main():
 
         if sys.platform == "win32":
             # Windows: Use Windows Terminal split pane
-            # wt.exe -w 0 sp -V --size 0.4 cmd /k "command"
             DETACHED_PROCESS = 0x00000008
             CREATE_NEW_PROCESS_GROUP = 0x00000200
+
+            # Find wt.exe - check PATH first, then common locations
+            wt_path = shutil.which("wt")
+            if not wt_path:
+                # Try common Windows Terminal locations
+                possible_paths = [
+                    os.path.expandvars(r"%LOCALAPPDATA%\Microsoft\WindowsApps\wt.exe"),
+                    r"C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.0.0.0_x64__8wekyb3d8bbwe\wt.exe",
+                ]
+                for path in possible_paths:
+                    if os.path.exists(path):
+                        wt_path = path
+                        break
+
+            if not wt_path:
+                debug_log("Windows Terminal (wt.exe) not found")
+                sys.exit(0)
 
             # Change to plugin directory and run the command
             full_cmd = f'cd /d "{plugin_root}" && {bun_cmd}'
 
-            debug_log(f"Running wt command: wt.exe -w 0 sp -V --size 0.4 cmd /k {full_cmd}")
+            debug_log(f"Running wt command: {wt_path} -w 0 sp -V --size 0.4 cmd /k {full_cmd}")
 
             subprocess.Popen(
-                ["wt.exe", "-w", "0", "sp", "-V", "--size", "0.4", "cmd", "/k", full_cmd],
+                [wt_path, "-w", "0", "sp", "-V", "--size", "0.4", "cmd", "/k", full_cmd],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 creationflags=DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
