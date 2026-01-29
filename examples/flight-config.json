@@ -1,0 +1,135 @@
+{
+  "title": "San Francisco to Denver - Friday, January 31, 2026",
+  "flights": [
+    {
+      "id": "ua-123",
+      "airline": "United Airlines",
+      "flightNumber": "UA 123",
+      "origin": {
+        "code": "SFO",
+        "city": "San Francisco",
+        "name": "San Francisco International Airport",
+        "timezone": "PST"
+      },
+      "destination": {
+        "code": "DEN",
+        "city": "Denver",
+        "name": "Denver International Airport",
+        "timezone": "MST"
+      },
+      "departureTime": "2026-01-31T06:00:00-08:00",
+      "arrivalTime": "2026-01-31T09:45:00-07:00",
+      "duration": 165,
+      "price": 29900,
+      "currency": "USD",
+      "cabinClass": "economy",
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "amenities": ["WiFi", "Power outlets", "Streaming entertainment"]
+    },
+    {
+      "id": "ua-456",
+      "airline": "United Airlines",
+      "flightNumber": "UA 456",
+      "origin": {
+        "code": "SFO",
+        "city": "San Francisco",
+        "name": "San Francisco International Airport",
+        "timezone": "PST"
+      },
+      "destination": {
+        "code": "DEN",
+        "city": "Denver",
+        "name": "Denver International Airport",
+        "timezone": "MST"
+      },
+      "departureTime": "2026-01-31T10:30:00-08:00",
+      "arrivalTime": "2026-01-31T14:10:00-07:00",
+      "duration": 160,
+      "price": 24900,
+      "currency": "USD",
+      "cabinClass": "economy",
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "amenities": ["WiFi", "Power outlets", "Snacks for purchase"]
+    },
+    {
+      "id": "ua-789",
+      "airline": "United Airlines",
+      "flightNumber": "UA 789",
+      "origin": {
+        "code": "SFO",
+        "city": "San Francisco",
+        "name": "San Francisco International Airport",
+        "timezone": "PST"
+      },
+      "destination": {
+        "code": "DEN",
+        "city": "Denver",
+        "name": "Denver International Airport",
+        "timezone": "MST"
+      },
+      "departureTime": "2026-01-31T14:45:00-08:00",
+      "arrivalTime": "2026-01-31T18:30:00-07:00",
+      "duration": 165,
+      "price": 27900,
+      "currency": "USD",
+      "cabinClass": "economy",
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "amenities": ["WiFi", "Streaming entertainment"]
+    },
+    {
+      "id": "dl-234",
+      "airline": "Delta Air Lines",
+      "flightNumber": "DL 234",
+      "origin": {
+        "code": "SFO",
+        "city": "San Francisco",
+        "name": "San Francisco International Airport",
+        "timezone": "PST"
+      },
+      "destination": {
+        "code": "DEN",
+        "city": "Denver",
+        "name": "Denver International Airport",
+        "timezone": "MST"
+      },
+      "departureTime": "2026-01-31T08:15:00-08:00",
+      "arrivalTime": "2026-01-31T12:00:00-07:00",
+      "duration": 165,
+      "price": 32900,
+      "currency": "USD",
+      "cabinClass": "economy",
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "amenities": ["WiFi", "Power outlets", "Complimentary snacks", "Streaming entertainment"]
+    },
+    {
+      "id": "sw-567",
+      "airline": "Southwest Airlines",
+      "flightNumber": "WN 567",
+      "origin": {
+        "code": "SFO",
+        "city": "San Francisco",
+        "name": "San Francisco International Airport",
+        "timezone": "PST"
+      },
+      "destination": {
+        "code": "DEN",
+        "city": "Denver",
+        "name": "Denver International Airport",
+        "timezone": "MST"
+      },
+      "departureTime": "2026-01-31T12:00:00-08:00",
+      "arrivalTime": "2026-01-31T15:40:00-07:00",
+      "duration": 160,
+      "price": 19900,
+      "currency": "USD",
+      "cabinClass": "economy",
+      "stops": 0,
+      "aircraft": "Boeing 737-700",
+      "amenities": ["WiFi", "2 free checked bags"]
+    }
+  ]
+}

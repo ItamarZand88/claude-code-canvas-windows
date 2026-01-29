@@ -1,0 +1,38 @@
+{
+  "name": "@claude-canvas/canvas-windows",
+  "version": "1.0.0",
+  "description": "Cross-platform canvas plugin for Claude Code (Windows/Unix)",
+  "module": "src/cli.ts",
+  "type": "module",
+  "bin": {
+    "canvas": "src/cli.ts"
+  },
+  "scripts": {
+    "start": "bun run src/cli.ts",
+    "show": "bun run src/cli.ts show",
+    "spawn": "bun run src/cli.ts spawn",
+    "env": "bun run src/cli.ts env"
+  },
+  "dependencies": {
+    "commander": "^14.0.2",
+    "ink": "^6.6.0",
+    "ink-spinner": "^5.0.0",
+    "react": "^19.2.3"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.10.0",
+    "@types/react": "^19.2.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "My Weekly Schedule",
+  "events": [
+    {
+      "id": "1",
+      "title": "Morning Standup",
+      "startTime": "2026-01-28T09:00:00",
+      "endTime": "2026-01-28T09:30:00",
+      "color": "cyan"
+    },
+    {
+      "id": "2",
+      "title": "Project Planning",
+      "startTime": "2026-01-28T10:00:00",
+      "endTime": "2026-01-28T11:30:00",
+      "color": "blue"
+    },
+    {
+      "id": "3",
+      "title": "Lunch with Team",
+      "startTime": "2026-01-28T12:00:00",
+      "endTime": "2026-01-28T13:00:00",
+      "color": "green"
+    },
+    {
+      "id": "4",
+      "title": "Code Review Session",
+      "startTime": "2026-01-28T14:00:00",
+      "endTime": "2026-01-28T15:30:00",
+      "color": "magenta"
+    },
+    {
+      "id": "5",
+      "title": "1:1 with Manager",
+      "startTime": "2026-01-28T16:00:00",
+      "endTime": "2026-01-28T16:30:00",
+      "color": "yellow"
+    },
+    {
+      "id": "6",
+      "title": "Team Retrospective",
+      "startTime": "2026-01-29T10:00:00",
+      "endTime": "2026-01-29T11:00:00",
+      "color": "cyan"
+    },
+    {
+      "id": "7",
+      "title": "Client Demo",
+      "startTime": "2026-01-29T14:00:00",
+      "endTime": "2026-01-29T15:00:00",
+      "color": "red"
+    },
+    {
+      "id": "8",
+      "title": "Friday Wrap-up",
+      "startTime": "2026-01-30T17:00:00",
+      "endTime": "2026-01-30T17:30:00",
+      "color": "green"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "canvas",
+  "version": "1.0.0",
+  "description": "Spawn and control interactive terminal displays (calendars, documents, flights) with real-time IPC communication on Windows and Unix systems",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "keywords": ["canvas", "terminal", "tui", "windows", "tmux", "split-pane"],
+  "license": "MIT",
+  "hooks": "./hooks"
+}

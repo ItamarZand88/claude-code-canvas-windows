@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun test)",
+      "Bash(powershell -Command \"Test-Path ''$env:LOCALAPPDATA\\\\Microsoft\\\\WindowsApps\\\\wt.exe''\")",
+      "Bash(powershell:*)",
+      "Bash(bun -e:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
+      "Bash(dir /b \"C:\\\\Users\\\\ItamarZand\\\\Downloads\\\\claude-canvas-windows\\\\claude-canvas-windows\")"
+    ]
+  }
+}

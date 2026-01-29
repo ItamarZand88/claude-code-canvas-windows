@@ -1,0 +1,41 @@
+{
+  "name": "claude-canvas-windows",
+  "version": "1.0.0",
+  "description": "Cross-platform canvas toolkit for Claude Code - Windows Terminal, ConEmu, PowerShell, and tmux support",
+  "type": "module",
+  "private": true,
+  "workspaces": ["canvas"],
+  "scripts": {
+    "start": "bun run canvas/src/cli.ts",
+    "show": "bun run canvas/src/cli.ts show",
+    "spawn": "bun run canvas/src/cli.ts spawn",
+    "env": "bun run canvas/src/cli.ts env"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/node": "^20.10.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "commander": "^14.0.2",
+    "ink": "^6.6.0",
+    "ink-spinner": "^5.0.0"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "windows-terminal",
+    "canvas",
+    "tui",
+    "terminal",
+    "ink",
+    "react"
+  ]
+}
