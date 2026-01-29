@@ -5,19 +5,33 @@
 # Read JSON input from stdin
 input=$(cat)
 
-# Extract file path - try jq first, fall back to grep/sed
+# Debug: uncomment to log input
+# echo "$input" >> /tmp/hook-debug.log
+
+# Extract file path - handle both escaped and unescaped backslashes
+# First try jq (works if JSON is properly escaped)
+file_path=""
 if command -v jq &> /dev/null; then
   file_path=$(echo "$input" | jq -r '.tool_input.file_path // empty' 2>/dev/null)
-else
-  # Fallback: extract file_path using grep/sed
-  file_path=$(echo "$input" | grep -o '"file_path"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/.*"file_path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/')
 fi
 
-# Exit if no file path
+# If jq failed or returned empty, try regex extraction
+if [ -z "$file_path" ]; then
+  # Extract file_path value using grep - handles various escape patterns
+  file_path=$(echo "$input" | grep -oP '"file_path"\s*:\s*"\K[^"]+' 2>/dev/null)
+fi
+
+# If still empty, try a simpler pattern
+if [ -z "$file_path" ]; then
+  file_path=$(echo "$input" | sed -n 's/.*"file_path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+fi
+
+# Exit if no file path found
 [ -z "$file_path" ] && exit 0
 
 # Normalize path separators for comparison (Windows uses backslashes)
-normalized_path=$(echo "$file_path" | tr '\\' '/')
+# Also handle escaped backslashes from JSON
+normalized_path=$(echo "$file_path" | sed 's/\\\\/\//g' | tr '\\' '/')
 
 # Check if this is a plan file (.claude/plans/*.md)
 if [[ "$normalized_path" != *".claude/plans/"* ]]; then
@@ -30,12 +44,12 @@ if [[ "$normalized_path" != *.md ]]; then
 fi
 
 # Lock file to prevent multiple viewers per session
-session_id=$(echo "$input" | jq -r '.session_id // "default"' 2>/dev/null || echo "default")
+session_id=$(echo "$input" | jq -r '.session_id // "default"' 2>/dev/null)
+[ -z "$session_id" ] && session_id="default"
 lock_file="${TEMP:-${TMPDIR:-/tmp}}/claude-plan-viewer-${session_id}.lock"
 
 # Check if viewer already running for this session
 if [ -f "$lock_file" ]; then
-  # Lock exists - don't spawn another viewer
   exit 0
 fi
 
@@ -51,5 +65,4 @@ cd "${CLAUDE_PLUGIN_ROOT}" || exit 0
 # Spawn the plan viewer in background (detached)
 nohup bun run src/cli.ts watch-plan "$file_path" --title "Plan: $plan_name" > /dev/null 2>&1 &
 
-# Success - don't output anything to avoid interfering with Claude
 exit 0

@@ -10,7 +10,10 @@
       "Bash(dir /b \"C:\\\\Users\\\\ItamarZand\\\\Downloads\\\\claude-canvas-windows\\\\claude-canvas-windows\")",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(export CLAUDE_PLUGIN_ROOT=\"C:/Users/ItamarZand/.claude/plugins/cache/claude-code-canvas-windows/canvas/1.0.0\")",
+      "Bash(echo '{\"\"tool_input\"\":{\"\"file_path\"\":\"\"C:\\\\\\\\Users\\\\\\\\ItamarZand\\\\\\\\.claude\\\\\\\\plans\\\\\\\\test.md\"\"},\"\"session_id\"\":\"\"test123\"\"}')",
+      "Bash(bash -x:*)"
     ]
   }
 }
