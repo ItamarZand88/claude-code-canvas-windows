@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/ensure_dependencies.py",
+            "command": "python ${CLAUDE_PLUGIN_ROOT}/hooks/ensure_dependencies.py",
             "timeout": 60
           }
         ]
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/spawn_plan_viewer.py",
+            "command": "python ${CLAUDE_PLUGIN_ROOT}/hooks/spawn_plan_viewer.py",
             "timeout": 15
           }
         ]
