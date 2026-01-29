@@ -1,6 +1,18 @@
 {
-  "description": "Auto-spawn plan viewer for plan files",
+  "description": "Canvas plugin hooks - auto-install deps and spawn plan viewer",
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/ensure-dependencies.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",

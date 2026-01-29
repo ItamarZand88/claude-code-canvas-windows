@@ -41,10 +41,32 @@ Install as a Claude Code plugin from our marketplace:
 /plugin marketplace add ItamarZand88/claude-code-canvas-windows
 
 # Step 2: Install the canvas plugin
-/plugin install canvas@ItamarZand88-claude-code-canvas-windows
+/plugin install canvas@claude-code-canvas-windows
+
+# Step 3: Install dependencies in the plugin cache (REQUIRED)
+cd ~/.claude/plugins/cache/claude-code-canvas-windows/canvas/1.0.0 && bun install
 ```
 
+**Important:** After installing the plugin, you MUST run `bun install` in the plugin cache directory to install the required dependencies (ink, react, etc.).
+
 Once installed, you can use skills like `/canvas:calendar` or ask Claude about calendars, documents, and flights.
+
+### Post-Installation: Install Dependencies
+
+After installing the plugin, run this command to install required npm packages:
+
+**Windows (PowerShell):**
+```powershell
+cd $env:USERPROFILE\.claude\plugins\cache\claude-code-canvas-windows\canvas\1.0.0
+bun install
+```
+
+**Windows (Git Bash) / macOS / Linux:**
+```bash
+cd ~/.claude/plugins/cache/claude-code-canvas-windows/canvas/1.0.0 && bun install
+```
+
+This installs: `ink`, `react`, `commander`, and other TUI dependencies.
 
 ### Option 2: Local Development with --plugin-dir
 
