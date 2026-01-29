@@ -1,8 +1,8 @@
 {
   "name": "claude-canvas-windows",
   "owner": {
-    "name": "Your Name",
-    "email": "your.email@example.com"
+    "name": "ItamarZand88",
+    "email": "zanditamar@gmail.com"
   },
   "metadata": {
     "description": "Cross-platform canvas toolkit for Claude Code - Windows Terminal, ConEmu, PowerShell, and tmux support"
