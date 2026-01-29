@@ -32,22 +32,42 @@ A cross-platform TUI toolkit that gives Claude Code its own display. Spawn inter
 
 ## Installation
 
-### Option 1: Claude Code Plugin Marketplace
+### Option 1: Claude Code Plugin (Recommended)
+
+Install as a Claude Code plugin from our marketplace:
 
 ```bash
-# Add this repository as a marketplace in Claude Code
-/plugin marketplace add YourGitHubUsername/claude-canvas-windows
+# Step 1: Add this repository as a marketplace in Claude Code
+/plugin marketplace add ItamarZand88/claude-code-canvas-windows
 
-# Install the canvas plugin
-/plugin install canvas@claude-canvas
+# Step 2: Install the canvas plugin
+/plugin install canvas@ItamarZand88-claude-code-canvas-windows
 ```
 
-### Option 2: Manual Installation
+Once installed, you can use skills like `/canvas:calendar` or ask Claude about calendars, documents, and flights.
+
+### Option 2: Local Development with --plugin-dir
+
+For development and testing:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YourGitHubUsername/claude-canvas-windows.git
-cd claude-canvas-windows
+git clone https://github.com/ItamarZand88/claude-code-canvas-windows.git
+cd claude-code-canvas-windows
+
+# Install dependencies
+bun install
+
+# Run Claude Code with the plugin loaded locally
+claude --plugin-dir ./canvas
+```
+
+### Option 3: Manual Installation (No Plugin)
+
+```bash
+# Clone the repository
+git clone https://github.com/ItamarZand88/claude-code-canvas-windows.git
+cd claude-code-canvas-windows
 
 # Install dependencies
 bun install
@@ -338,7 +358,7 @@ MIT License - See [LICENSE](LICENSE) file
 
 Original project by [David Siegel](https://github.com/dvdsgl) - [dvdsgl/claude-canvas](https://github.com/dvdsgl/claude-canvas)
 
-Windows port and cross-platform support by [Your Name]
+Windows port and cross-platform support by [ItamarZand88](https://github.com/ItamarZand88)
 
 ## Related Projects
 

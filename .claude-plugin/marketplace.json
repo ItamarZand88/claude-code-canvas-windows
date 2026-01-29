@@ -1,20 +1,23 @@
 {
-  "name": "claude-canvas-windows",
+  "$schema": "https://cdn.anthropic.com/schemas/claude-code/marketplace.schema.json",
+  "name": "claude-code-canvas-windows",
+  "version": "1.0.0",
+  "description": "Cross-platform canvas toolkit for Claude Code - Windows Terminal split panes, interactive TUI components, and plan mode viewer",
   "owner": {
     "name": "ItamarZand88",
     "email": "zanditamar@gmail.com"
   },
-  "metadata": {
-    "description": "Cross-platform canvas toolkit for Claude Code - Windows Terminal, ConEmu, PowerShell, and tmux support"
-  },
   "plugins": [
     {
       "name": "canvas",
-      "source": "./canvas",
-      "description": "Spawn and control interactive terminal displays (calendars, documents, flights) with real-time IPC communication on Windows and Unix systems",
+      "description": "Spawn interactive terminal displays (calendars, documents, flights) in split panes with real-time IPC updates. Includes automatic plan mode viewer.",
       "version": "1.0.0",
-      "strict": false,
-      "platforms": ["win32", "darwin", "linux"]
+      "author": {
+        "name": "ItamarZand88",
+        "email": "zanditamar@gmail.com"
+      },
+      "source": "./canvas",
+      "category": "productivity"
     }
   ]
 }
