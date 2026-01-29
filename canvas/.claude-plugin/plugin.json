@@ -8,5 +8,5 @@
   },
   "keywords": ["canvas", "terminal", "tui", "windows", "tmux", "split-pane"],
   "license": "MIT",
-  "hooks": "./hooks"
+  "hooks": "./hooks/hooks.json"
 }
