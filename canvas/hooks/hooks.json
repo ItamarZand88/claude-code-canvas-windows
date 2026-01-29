@@ -3,11 +3,10 @@
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/ensure-dependencies.sh",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/ensure_dependencies.py",
             "timeout": 60
           }
         ]
@@ -19,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/spawn-plan-viewer.sh",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/spawn_plan_viewer.py",
             "timeout": 15
           }
         ]
